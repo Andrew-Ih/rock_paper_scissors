@@ -40,27 +40,51 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+const buttons = document.querySelectorAll('button');
 
-function playGame(round) {
-    for(let i=0; i<round; i++){
+const pScore = document.querySelector('.pScore');
+pScore.textContent = "Player Score: " + playerScore;
+
+const cScore = document.querySelector('.cScore');
+cScore.textContent = "Computer Score: " + computerScore;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
         const computerSelection = getComputerChoice();
-        const playerSelection = prompt("Select a Weapon! (Rock, Paper or Scissors)");
-
-        console.log("Player: " + playerSelection + " Computer: " + computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(button.id, computerSelection);
+        console.log("Player: " + button.id + " Computer: " + computerSelection);
         console.log("Player: " + playerScore + " Computer: " + computerScore);
-    }
 
-    if (playerScore > computerScore) {
-        return "YOU WON THE GAME!";
-    } else if (playerScore < computerScore) {
-        return "COMPUTER WIN!!";
-    } else {
-        return "TIE!!";
-    }
+        pScore.textContent = "Player Score: " + playerScore;
+
+        cScore.textContent = "Computer Score: " + computerScore;
+      });
+});
+
+
+        
+
+
+function playGame() {
+    // for(let i=0; i<5; i++){
+    //     const computerSelection = getComputerChoice();
+    //     const playerSelection = prompt("Select a Weapon! (Rock, Paper or Scissors)");
+
+    //     console.log("Player: " + playerSelection + " Computer: " + computerSelection);
+    //     console.log(playRound(playerSelection, computerSelection));
+    //     console.log("Player: " + playerScore + " Computer: " + computerScore);
+    // }
+
+    // if (playerScore > computerScore) {
+    //     return "YOU WON THE GAME!";
+    // } else if (playerScore < computerScore) {
+    //     return "COMPUTER WIN!!";
+    // } else {
+    //     return "TIE!!";
+    // }
 }
 
-console.log(playGame(5));
+console.log(playGame());
 
 
 
